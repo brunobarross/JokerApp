@@ -17,7 +17,7 @@
             android:theme="@style/Theme.JokerAppDev.PopUpOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include android:layout="@layout/content_main" />
+    <include layout="@layout/content_main" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
