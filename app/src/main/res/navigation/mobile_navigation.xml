@@ -6,17 +6,17 @@
     app:startDestination="@id/nav_home">
     <fragment
         android:id="@+id/nav_home"
-        android:name="co.tiagoaguiar.tutorial.jokerappdev.HomeFragment"
+        android:name="co.tiagoaguiar.tutorial.jokerappdev.view.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/home_fragment" />
     <fragment
         android:id="@+id/nav_joke_day"
-        android:name="co.tiagoaguiar.tutorial.jokerappdev.JokeDayFragment"
+        android:name="co.tiagoaguiar.tutorial.jokerappdev.view.JokeDayFragment"
         android:label="@string/menu_joke_day"
         tools:layout="@layout/joke_day_fragment" />
     <fragment
-        android:id="@+id/nav_about"
-        android:name="co.tiagoaguiar.tutorial.jokerappdev.AboutFragment"
+        android:id="@+id/nav_social"
+        android:name="co.tiagoaguiar.tutorial.jokerappdev.view.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/about_fragment" />
 
