@@ -3,11 +3,9 @@ package co.tiagoaguiar.tutorial.jokerappdev.view
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import co.tiagoaguiar.tutorial.jokerappdev.R
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item
-import java.util.Locale.Category
 
 class CategoryItem(private val category: co.tiagoaguiar.tutorial.jokerappdev.model.Category) :
     Item<CategoryItem.CategoryViewHolder>() {
