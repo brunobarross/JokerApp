@@ -9,15 +9,24 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.tiagoaguiar.tutorial.jokerappdev.R
 import co.tiagoaguiar.tutorial.jokerappdev.model.Category
+import co.tiagoaguiar.tutorial.jokerappdev.presentation.HomePresenter
 import com.xwray.groupie.GroupieAdapter
 
 class HomeFragment : Fragment() {
+    private lateinit var presenter: HomePresenter
+    private val adapter = GroupieAdapter()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        presenter = HomePresenter(this)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       return inflater.inflate(R.layout.home_fragment, container, false)
+        return inflater.inflate(R.layout.home_fragment, container, false)
 
     }
 
@@ -26,10 +35,15 @@ class HomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.rv_home)
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext()) //busca o contexto
-        val adapter = GroupieAdapter()
+        presenter.findAllCategory()
         recyclerView.adapter = adapter
-        adapter.add(
-            CategoryItem(Category("Categoria 1", 0xFFFF0000))
-        )
+
+        adapter.notifyDataSetChanged()
+    }
+
+    fun showCategories(categories: List<CategoryItem>) {
+        adapter.addAll(categories)
+        adapter.notifyDataSetChanged()
+
     }
 }
