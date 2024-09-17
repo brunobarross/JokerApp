@@ -3,46 +3,39 @@ package co.tiagoaguiar.tutorial.jokerappdev.presentation
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
+import co.tiagoaguiar.tutorial.jokerappdev.data.CategoryRemoteDataSource
+import co.tiagoaguiar.tutorial.jokerappdev.data.ListCategoryCallback
 import co.tiagoaguiar.tutorial.jokerappdev.model.Category
 import co.tiagoaguiar.tutorial.jokerappdev.view.CategoryItem
 import co.tiagoaguiar.tutorial.jokerappdev.view.HomeFragment
 
-class HomePresenter(private val view: HomeFragment) {
+class HomePresenter(
+    private val view: HomeFragment,
+    //recebo o construtor com valor padrão
+    private val dataSource: CategoryRemoteDataSource = CategoryRemoteDataSource()
+) : ListCategoryCallback {
 
     // VIEW <- PRESENTER
     // PRESENTER -> VIEW
     fun findAllCategory() {
         view.showProgress()
-        fakeRequest()
-
+        dataSource.getCategories(this)
     }
 
-    fun onComplete() {
+    override fun onComplete() {
         view.hideProgress()
     }
 
-    fun onSuccess(response: List<String>) {
+    override fun onSuccess(response: List<String>) {
         val categories = response.map { category -> Category(category, 0xFFFF0000) }
         view.showCategories(categories)
     }
 
-    fun onError(message: String) {
+    override fun onError(message: String) {
         view.showFailure(message)
 
     }
 
-    //simula requisição HTTP
-    private fun fakeRequest() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            val response = arrayListOf(
-                "Categoria 1"
-            )
-            //aqui a lista já está pronta
-            onSuccess(response)
-//            onError(("FALHA NA CONEXÇAO. TENTA NOVAMENTE!!!"))
-            onComplete()
-        }, 2000)
-    }
 
 }
 
