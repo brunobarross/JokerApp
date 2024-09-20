@@ -9,7 +9,7 @@ import co.tiagoaguiar.tutorial.jokerappdev.model.Category
 import co.tiagoaguiar.tutorial.jokerappdev.view.CategoryItem
 import co.tiagoaguiar.tutorial.jokerappdev.view.HomeFragment
 
-class HomePresenter(
+class  HomePresenter(
     private val view: HomeFragment,
     //recebo o construtor com valor padrão
     private val dataSource: CategoryRemoteDataSource = CategoryRemoteDataSource()

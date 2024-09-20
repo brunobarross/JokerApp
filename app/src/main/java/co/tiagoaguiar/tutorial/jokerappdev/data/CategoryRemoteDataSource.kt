@@ -23,7 +23,7 @@ class CategoryRemoteDataSource {
                         callback.onSuccess(categories ?: emptyList())
                     } else{
                         // quando o servidor devolve status de error < 500
-                        val error = response.errorBody()?.toString() // mensagem de erro
+                        val error = response.errorBody()?.string() // mensagem de erro
                         callback.onError(error ?: "Erro desconhecido")
                     }
                     callback.onComplete()
