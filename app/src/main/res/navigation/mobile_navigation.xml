@@ -8,7 +8,16 @@
         android:id="@+id/nav_home"
         android:name="co.tiagoaguiar.tutorial.jokerappdev.view.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/home_fragment" />
+        tools:layout="@layout/home_fragment">
+        <action
+            android:id="@+id/action_nav_home_to_nav_joke"
+            app:destination="@id/nav_joke" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_joke"
+        android:name="co.tiagoaguiar.tutorial.jokerappdev.view.JokeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/joke_fragment" />
     <fragment
         android:id="@+id/nav_joke_day"
         android:name="co.tiagoaguiar.tutorial.jokerappdev.view.JokeDayFragment"

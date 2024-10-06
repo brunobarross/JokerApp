@@ -1,5 +1,6 @@
 package co.tiagoaguiar.tutorial.jokerappdev.presentation
 
+import android.graphics.Color
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
@@ -9,7 +10,7 @@ import co.tiagoaguiar.tutorial.jokerappdev.model.Category
 import co.tiagoaguiar.tutorial.jokerappdev.view.CategoryItem
 import co.tiagoaguiar.tutorial.jokerappdev.view.HomeFragment
 
-class  HomePresenter(
+class HomePresenter(
     private val view: HomeFragment,
     //recebo o construtor com valor padrão
     private val dataSource: CategoryRemoteDataSource = CategoryRemoteDataSource()
@@ -27,7 +28,20 @@ class  HomePresenter(
     }
 
     override fun onSuccess(response: List<String>) {
-        val categories = response.map { category -> Category(category, 0xFFFF0000) }
+        val start = 40
+        val end = 190
+        val diff = (end - start) / response.size
+        val categories = response.mapIndexed { index, s ->
+            val hsv = floatArrayOf(
+                start + (diff + index).toFloat(),
+                100.0f,
+                100.0f
+            )
+
+            Category(s, Color.HSVToColor(hsv).toLong())
+
+        }
+
         view.showCategories(categories)
     }
 
