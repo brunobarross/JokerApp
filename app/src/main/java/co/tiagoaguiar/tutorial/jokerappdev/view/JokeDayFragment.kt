@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import co.tiagoaguiar.tutorial.jokerappdev.R
 
 class JokeDayFragment : Fragment() {
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
