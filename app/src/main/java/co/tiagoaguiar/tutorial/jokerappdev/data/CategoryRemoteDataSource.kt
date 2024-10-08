@@ -1,8 +1,6 @@
 package co.tiagoaguiar.tutorial.jokerappdev.data
 
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
+
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

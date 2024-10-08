@@ -1,6 +1,6 @@
 package co.tiagoaguiar.tutorial.jokerappdev.model
 
-data class Joker(
+data class Joke(
     val id: String,
     val value: String,
     val iconUrl: String,

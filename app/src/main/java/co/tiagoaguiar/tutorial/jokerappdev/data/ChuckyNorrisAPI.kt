@@ -1,6 +1,6 @@
 package co.tiagoaguiar.tutorial.jokerappdev.data
 
-import co.tiagoaguiar.tutorial.jokerappdev.model.Joker
+import co.tiagoaguiar.tutorial.jokerappdev.model.Joke
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
@@ -14,5 +14,5 @@ interface ChuckyNorrisAPI {
     fun getJoke(
         @Query("category") category: String,
         @Query("apiKey") apiKey: String = HTTPClient.API_KEY
-    ): Response<Joker>
+    ): Response<Joke>
 }
