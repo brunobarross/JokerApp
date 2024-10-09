@@ -11,15 +11,15 @@ class CategoryRemoteDataSource {
         HTTPClient.retrofit()
             .create(ChuckyNorrisAPI::class.java)
             .getCategories()
-            .enqueue(object : Callback<List<String>>{
+            .enqueue(object : Callback<List<String>> {
                 override fun onResponse(
                     call: Call<List<String>>,
                     response: Response<List<String>>
                 ) {
-                    if(response.isSuccessful){
+                    if (response.isSuccessful) {
                         val categories = response.body() // aqui tem a lista de categorias
                         callback.onSuccess(categories ?: emptyList())
-                    } else{
+                    } else {
                         // quando o servidor devolve status de error < 500
                         val error = response.errorBody()?.string() // mensagem de erro
                         callback.onError(error ?: "Erro desconhecido")

@@ -14,5 +14,5 @@ interface ChuckyNorrisAPI {
     fun getJoke(
         @Query("category") category: String,
         @Query("apiKey") apiKey: String = HTTPClient.API_KEY
-    ): Response<Joke>
+    ): Call<Joke>
 }
