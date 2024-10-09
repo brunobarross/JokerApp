@@ -52,7 +52,6 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = adapter
         adapter.notifyDataSetChanged()
         adapter.setOnItemClickListener { item, view ->
-
             val bundle = Bundle()
             val categoryName = (item as CategoryItem).category.name
             bundle.putString(JokeFragment.CATEGORY_KEY, categoryName)

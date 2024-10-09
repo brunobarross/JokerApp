@@ -1,6 +1,5 @@
 package co.tiagoaguiar.tutorial.jokerappdev.presentation
 
-import android.util.Log
 import co.tiagoaguiar.tutorial.jokerappdev.data.JokeRemoteDataSource
 import co.tiagoaguiar.tutorial.jokerappdev.data.ListJokeCallback
 import co.tiagoaguiar.tutorial.jokerappdev.model.Joke
@@ -10,19 +9,22 @@ class JokePresenter(
     private val view: JokeFragment,
     private val dataSource: JokeRemoteDataSource = JokeRemoteDataSource()
 ) : ListJokeCallback {
-    fun findJoke(){
-        dataSource.getJokes(this)
+    fun findJoke(category: String) {
+        view.showProgress()
+        dataSource.getJokes(this, category)
+
     }
+
     override fun onSuccess(response: Joke) {
-        Log.d("sucesso", response.toString())
+        view.showJoke(response)
     }
 
     override fun onError(response: String) {
-        Log.e("erro", response)
+        view.showFailure(response)
     }
 
     override fun onComplete() {
-        println("Completou")
+        view.hideProgress()
     }
 
 }
