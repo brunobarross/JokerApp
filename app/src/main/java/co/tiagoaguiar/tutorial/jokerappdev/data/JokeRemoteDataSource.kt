@@ -14,7 +14,7 @@ class JokeRemoteDataSource {
                 override fun onResponse(call: Call<Joke>, response: Response<Joke>) {
                     if (response.isSuccessful) {
                         val joke = response.body()
-                        if (joke != null) callback.onSuccess(joke)
+                        callback.onSuccess(joke ?: throw RuntimeException("Piada não encontrada"))
 
                     } else {
                         val error = response.errorBody()?.string()

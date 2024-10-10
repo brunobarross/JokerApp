@@ -1,9 +1,9 @@
 package co.tiagoaguiar.tutorial.jokerappdev.model
 
+import com.google.gson.annotations.SerializedName
+
 data class Joke(
     val id: String,
-    val value: String,
-    val iconUrl: String,
-    val createdAt: String,
-    val updateAt: String,
+    @SerializedName("value") val text: String,
+    @SerializedName("icon_url") val icon_url: String,
 )

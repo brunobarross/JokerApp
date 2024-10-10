@@ -14,11 +14,13 @@ import co.tiagoaguiar.tutorial.jokerappdev.model.Joke
 import co.tiagoaguiar.tutorial.jokerappdev.presentation.JokePresenter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.xwray.groupie.GroupieAdapter
+import org.w3c.dom.Text
 
 class JokeFragment : Fragment() {
     private lateinit var presenter: JokePresenter
-    private val adapter = GroupieAdapter()
     private lateinit var progressBar: ProgressBar
+    private lateinit var txtJoke: TextView
+    private lateinit var imgJoke: ImageView
 
     companion object {
         //garanto que eu vá passar sempre o mesmo valor
@@ -42,9 +44,12 @@ class JokeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val categoryName = arguments?.getString((CATEGORY_KEY))
         val fbtn = view.findViewById<FloatingActionButton>(R.id.fab)
+
         progressBar = view.findViewById(R.id.joke_progress_bar)
         activity?.findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)?.title =
             categoryName?.replaceFirstChar { char -> char.titlecase() }
+        txtJoke = view.findViewById(R.id.txt_joke)
+        imgJoke = view.findViewById(R.id.img_joke)
 
         presenter.findJoke(categoryName.toString())
         fbtn.setOnClickListener {
@@ -55,11 +60,7 @@ class JokeFragment : Fragment() {
     }
 
     fun showJoke(response: Joke) {
-        adapter.notifyDataSetChanged()
-        val txt = view?.findViewById<TextView>(R.id.txt_joke)
-        val icon = view?.findViewById<ImageView>(R.id.img_joke)
-        txt?.text = response.value
-
+        txtJoke.text = response.text
     }
 
     fun showProgress() {
