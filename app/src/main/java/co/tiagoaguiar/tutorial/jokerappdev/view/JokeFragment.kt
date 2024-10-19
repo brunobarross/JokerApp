@@ -13,6 +13,7 @@ import co.tiagoaguiar.tutorial.jokerappdev.R
 import co.tiagoaguiar.tutorial.jokerappdev.model.Joke
 import co.tiagoaguiar.tutorial.jokerappdev.presentation.JokePresenter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupieAdapter
 import org.w3c.dom.Text
 
@@ -61,6 +62,7 @@ class JokeFragment : Fragment() {
 
     fun showJoke(response: Joke) {
         txtJoke.text = response.text
+        Picasso.get().load(response.icon_url).placeholder(R.drawable.logo).into(imgJoke)
     }
 
     fun showProgress() {
